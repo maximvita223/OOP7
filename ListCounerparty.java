@@ -4,18 +4,18 @@ import java.util.Scanner;
 public class ListCounerparty {
     private List<Counerparty> counerpartys;
     private int index;
+    private Scanner sc = new Scanner(System.in);
 
     public ListCounerparty(List<Counerparty> counerpartys) {
         this.counerpartys = counerpartys;
     }
 
-    public Communication find(String name) {
+    public void find(String name) {
         for (Counerparty counerparty : counerpartys) {
             if (counerparty.getName().equals(name)) {
-                return counerparty.getCommunication();
+                System.out.println(counerparty.getCommunication()); ;
             }
         }
-        return null;
     }
 
     public void addCounerpaty(String name) {
@@ -34,62 +34,69 @@ public class ListCounerparty {
         }
 
     }
-/*
-нужно переписать добавление и удаление 
-1 - убрать с Communication add и remove добавить в ListCounerparty get для всего
-2 - переписать сюда add и remove для каждого вида связи или написать новый класс добавления и удаления
-3 - посмотреть что получилось и решилась ли проблема со сканнером
-*/ 
-    public void addCommunity(String name, int commun) {
-        Scanner sc = new Scanner(System.in);
+
+    public void addCommunity(String name) {
+        
+        for (Counerparty counerparty : counerpartys) {
+
+            if (counerparty.getName().equals(name)) {
+                switch (sc.nextLine()) {
+                    case "1":
+                    System.out.println("Введите адресс - ");
+                        counerparty.getCommunication().addAdress(sc.nextLine());
+                        break;
+                
+                    case "2":
+                    System.out.println("Введите телефон - ");
+                        counerparty.getCommunication().addPhone(sc.nextInt());
+                        break;
+
+                    case "3":
+                    System.out.println("Введите email - ");
+                        counerparty.getCommunication().addEmail(sc.nextLine());
+                        break;
+
+                    case "4":
+                    System.out.println("Введите адресс ник в telegram - ");
+                        counerparty.getCommunication().addNikTelegram(sc.nextLine());
+                        break;
+
+                    case "5":
+                    System.out.println("Введите адресс VK - ");
+                        counerparty.getCommunication().addAdressVk(sc.nextLine());
+                        break;
+                }
+
+            }
+    }
+    }
+    public void removeCommunity(String name) {
         for (Counerparty counerparty : counerpartys) {
             if (counerparty.getName().equals(name)) {
-                if (commun == 1) {
-                    counerparty.getCommunication().addAdress(sc.nextLine());
-                }
-                if (commun == 2) {
-                    counerparty.getCommunication().addPhone(sc.nextInt());
-                }
-                if (commun == 3) {
-                    counerparty.getCommunication().addEmail(sc.nextLine());
-                }
-                if (commun == 4) {
-                    counerparty.getCommunication().addNikTelegram(sc.nextLine());
-                }
-                if (commun == 5) {
-                    counerparty.getCommunication().addAdressVk(sc.nextLine());
+                switch (sc.nextLine()) {
+                    case "1":
+                        counerparty.getCommunication().removeAllAdress();
+                        break;
+                
+                    case "2":
+                        counerparty.getCommunication().removeAllPhone();
+                        break;
+
+                    case "3":
+                        counerparty.getCommunication().removeAllEmail();
+                        break;
+
+                    case "4":
+                        counerparty.getCommunication().removeTelegrem();
+                        break;
+
+                    case "5":
+                        counerparty.getCommunication().removeVk();
+                        break;
                 }
 
             }
         }
-        sc.close();
-    }
-    public void removeCommunity(String name, int commun){
-        for (Counerparty counerparty : counerpartys) {
-            if (counerparty.getName().equals(name)) {
-                if (commun == 1) {
-                    counerparty.getCommunication().removeAllAdress();;
-                }
-                if (commun == 2) {
-                    counerparty.getCommunication().removeAllPhone();;
-                }
-                if (commun == 3) {
-                    counerparty.getCommunication().removeAllEmail();;
-                }
-                if (commun == 4) {
-                    counerparty.getCommunication().removeTelegrem();;
-                }
-                if (commun == 5) {
-                    counerparty.getCommunication().removeVk();;
-                }
-
-            }
-        }
     }
 
-    @Override
-    public String toString() {
-        return counerpartys.toString();
-    }
-    
 }

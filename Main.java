@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Main
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -16,8 +13,10 @@ public class Main {
         ListCounerparty lst = new ListCounerparty(lst1);
         lst.addCounerpaty("igor");
         lst.getList();
+        System.out.println(cp.getName()); 
         Scanner sc = new Scanner(System.in);
-
+        // lst.addCommunity("egor");
+        // System.out.println(cp.getCommunication());
 
 
 
@@ -57,7 +56,7 @@ public class Main {
                     System.out.println("    4. Ник в телеграмме");
                     System.out.println("    5. Адресс VK");
                     System.out.println();
-                    lst.addCommunity(sc.nextLine(), sc.nextInt());
+                    lst.addCommunity(sc.nextLine());
                     break;
                 case "6":
                     System.out.println("Введите имя контрагента и номер способа связи");
@@ -67,7 +66,7 @@ public class Main {
                     System.out.println("    4. Ник в телеграмме");
                     System.out.println("    5. Адресс VK");
                     System.out.println();
-                    lst.removeCommunity(sc.nextLine(), sc.nextInt());
+                    lst.removeCommunity(sc.nextLine());
                     break;
                 case "7":
                 sc.close();
